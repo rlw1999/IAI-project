@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<robot name="rbo" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:property name="rad" value="0.1"/>
+
+    <xacro:macro name="default_inertial" params="mass">
+        <inertial>
+            <mass value="${mass}" />
+            <inertia ixx="1.0" ixy="1.0" ixz="1.0" iyy="1.0" iyz="1.0" 			izz="1.0" />
+        </inertial>
+    </xacro:macro>
+
+    <xacro:macro name="ball_geometry" params="radius">
+        <geometry>
+            <sphere radius="${radius}"/>
+        </geometry>
+    </xacro:macro>
+
+    <link name="ball">
+
+        <visual>
+            <xacro:ball_geometry radius="${rad}" />
+			<origin rpy="0 0 0" xyz="0 0 1" />
+			<material name="black">
+				<color rgba="0 0 0 1"/>
+			</material>
+        </visual>
+
+        <collision>
+            <xacro:ball_geometry radius="${rad}" />
+        </collision>
+	<xacro:default_inertial mass="1.0"/>
+    </link>
+
+	<!-- position controller -->
+	<gazebo>
+	  <plugin name="base_controller" filename="libgazebo_ros_planar_move.so">
+		<commandTopic>cmd_vel</commandTopic>
+		<odometryTopic>odom</odometryTopic>
+		<odometryFrame>/odom</odometryFrame>
+		<odometryRate>100.0</odometryRate>
+		<robotBaseFrame>base_footprint</robotBaseFrame>
+		<broadcastTF>true</broadcastTF>
+	  </plugin>
+	</gazebo>
+
+    <!-- ros_control plugin -->
+    <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      	<robotNamespace>/robot</robotNamespace>
+    </plugin>
+  </gazebo>
+</robot>
