@@ -15,8 +15,6 @@ gazebo/physics/physics.hh
 -
 gazebo/common/common.hh
 -
-stdio.h
--
 stdlib.h
 -
 ctime

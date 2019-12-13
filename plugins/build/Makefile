@@ -123,6 +123,86 @@ autobin_move/fast:
 	$(MAKE) -f CMakeFiles/autobin_move.dir/build.make CMakeFiles/autobin_move.dir/build
 .PHONY : autobin_move/fast
 
+#=============================================================================
+# Target rules for targets named ContactPlugin
+
+# Build rule for target.
+ContactPlugin: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ContactPlugin
+.PHONY : ContactPlugin
+
+# fast build rule for target.
+ContactPlugin/fast:
+	$(MAKE) -f CMakeFiles/ContactPlugin.dir/build.make CMakeFiles/ContactPlugin.dir/build
+.PHONY : ContactPlugin/fast
+
+#=============================================================================
+# Target rules for targets named TransporterPlugin
+
+# Build rule for target.
+TransporterPlugin: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 TransporterPlugin
+.PHONY : TransporterPlugin
+
+# fast build rule for target.
+TransporterPlugin/fast:
+	$(MAKE) -f CMakeFiles/TransporterPlugin.dir/build.make CMakeFiles/TransporterPlugin.dir/build
+.PHONY : TransporterPlugin/fast
+
+ContactPlugin.o: ContactPlugin.cc.o
+
+.PHONY : ContactPlugin.o
+
+# target to build an object file
+ContactPlugin.cc.o:
+	$(MAKE) -f CMakeFiles/ContactPlugin.dir/build.make CMakeFiles/ContactPlugin.dir/ContactPlugin.cc.o
+.PHONY : ContactPlugin.cc.o
+
+ContactPlugin.i: ContactPlugin.cc.i
+
+.PHONY : ContactPlugin.i
+
+# target to preprocess a source file
+ContactPlugin.cc.i:
+	$(MAKE) -f CMakeFiles/ContactPlugin.dir/build.make CMakeFiles/ContactPlugin.dir/ContactPlugin.cc.i
+.PHONY : ContactPlugin.cc.i
+
+ContactPlugin.s: ContactPlugin.cc.s
+
+.PHONY : ContactPlugin.s
+
+# target to generate assembly for a file
+ContactPlugin.cc.s:
+	$(MAKE) -f CMakeFiles/ContactPlugin.dir/build.make CMakeFiles/ContactPlugin.dir/ContactPlugin.cc.s
+.PHONY : ContactPlugin.cc.s
+
+TransporterPlugin.o: TransporterPlugin.cc.o
+
+.PHONY : TransporterPlugin.o
+
+# target to build an object file
+TransporterPlugin.cc.o:
+	$(MAKE) -f CMakeFiles/TransporterPlugin.dir/build.make CMakeFiles/TransporterPlugin.dir/TransporterPlugin.cc.o
+.PHONY : TransporterPlugin.cc.o
+
+TransporterPlugin.i: TransporterPlugin.cc.i
+
+.PHONY : TransporterPlugin.i
+
+# target to preprocess a source file
+TransporterPlugin.cc.i:
+	$(MAKE) -f CMakeFiles/TransporterPlugin.dir/build.make CMakeFiles/TransporterPlugin.dir/TransporterPlugin.cc.i
+.PHONY : TransporterPlugin.cc.i
+
+TransporterPlugin.s: TransporterPlugin.cc.s
+
+.PHONY : TransporterPlugin.s
+
+# target to generate assembly for a file
+TransporterPlugin.cc.s:
+	$(MAKE) -f CMakeFiles/TransporterPlugin.dir/build.make CMakeFiles/TransporterPlugin.dir/TransporterPlugin.cc.s
+.PHONY : TransporterPlugin.cc.s
+
 autobin_move.o: autobin_move.cc.o
 
 .PHONY : autobin_move.o
@@ -157,8 +237,16 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
-	@echo "... rebuild_cache"
 	@echo "... autobin_move"
+	@echo "... ContactPlugin"
+	@echo "... rebuild_cache"
+	@echo "... TransporterPlugin"
+	@echo "... ContactPlugin.o"
+	@echo "... ContactPlugin.i"
+	@echo "... ContactPlugin.s"
+	@echo "... TransporterPlugin.o"
+	@echo "... TransporterPlugin.i"
+	@echo "... TransporterPlugin.s"
 	@echo "... autobin_move.o"
 	@echo "... autobin_move.i"
 	@echo "... autobin_move.s"

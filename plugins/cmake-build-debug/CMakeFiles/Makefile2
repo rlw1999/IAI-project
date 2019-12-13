@@ -53,12 +53,16 @@ CMAKE_BINARY_DIR = /home/ccr/Desktop/IAI-project/plugins/cmake-build-debug
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
+all: CMakeFiles/TransporterPlugin.dir/all
 all: CMakeFiles/autobin_move.dir/all
+all: CMakeFiles/ContactPlugin.dir/all
 
 .PHONY : all
 
 # The main recursive "clean" target.
+clean: CMakeFiles/TransporterPlugin.dir/clean
 clean: CMakeFiles/autobin_move.dir/clean
+clean: CMakeFiles/ContactPlugin.dir/clean
 
 .PHONY : clean
 
@@ -68,13 +72,40 @@ preinstall:
 .PHONY : preinstall
 
 #=============================================================================
+# Target rules for target CMakeFiles/TransporterPlugin.dir
+
+# All Build rule for target.
+CMakeFiles/TransporterPlugin.dir/all:
+	$(MAKE) -f CMakeFiles/TransporterPlugin.dir/build.make CMakeFiles/TransporterPlugin.dir/depend
+	$(MAKE) -f CMakeFiles/TransporterPlugin.dir/build.make CMakeFiles/TransporterPlugin.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ccr/Desktop/IAI-project/plugins/cmake-build-debug/CMakeFiles --progress-num=3,4 "Built target TransporterPlugin"
+.PHONY : CMakeFiles/TransporterPlugin.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/TransporterPlugin.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ccr/Desktop/IAI-project/plugins/cmake-build-debug/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/TransporterPlugin.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ccr/Desktop/IAI-project/plugins/cmake-build-debug/CMakeFiles 0
+.PHONY : CMakeFiles/TransporterPlugin.dir/rule
+
+# Convenience name for target.
+TransporterPlugin: CMakeFiles/TransporterPlugin.dir/rule
+
+.PHONY : TransporterPlugin
+
+# clean rule for target.
+CMakeFiles/TransporterPlugin.dir/clean:
+	$(MAKE) -f CMakeFiles/TransporterPlugin.dir/build.make CMakeFiles/TransporterPlugin.dir/clean
+.PHONY : CMakeFiles/TransporterPlugin.dir/clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/autobin_move.dir
 
 # All Build rule for target.
 CMakeFiles/autobin_move.dir/all:
 	$(MAKE) -f CMakeFiles/autobin_move.dir/build.make CMakeFiles/autobin_move.dir/depend
 	$(MAKE) -f CMakeFiles/autobin_move.dir/build.make CMakeFiles/autobin_move.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ccr/Desktop/IAI-project/plugins/cmake-build-debug/CMakeFiles --progress-num=1,2 "Built target autobin_move"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ccr/Desktop/IAI-project/plugins/cmake-build-debug/CMakeFiles --progress-num=5,6 "Built target autobin_move"
 .PHONY : CMakeFiles/autobin_move.dir/all
 
 # Build rule for subdir invocation for target.
@@ -93,6 +124,33 @@ autobin_move: CMakeFiles/autobin_move.dir/rule
 CMakeFiles/autobin_move.dir/clean:
 	$(MAKE) -f CMakeFiles/autobin_move.dir/build.make CMakeFiles/autobin_move.dir/clean
 .PHONY : CMakeFiles/autobin_move.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/ContactPlugin.dir
+
+# All Build rule for target.
+CMakeFiles/ContactPlugin.dir/all:
+	$(MAKE) -f CMakeFiles/ContactPlugin.dir/build.make CMakeFiles/ContactPlugin.dir/depend
+	$(MAKE) -f CMakeFiles/ContactPlugin.dir/build.make CMakeFiles/ContactPlugin.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ccr/Desktop/IAI-project/plugins/cmake-build-debug/CMakeFiles --progress-num=1,2 "Built target ContactPlugin"
+.PHONY : CMakeFiles/ContactPlugin.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/ContactPlugin.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ccr/Desktop/IAI-project/plugins/cmake-build-debug/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/ContactPlugin.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ccr/Desktop/IAI-project/plugins/cmake-build-debug/CMakeFiles 0
+.PHONY : CMakeFiles/ContactPlugin.dir/rule
+
+# Convenience name for target.
+ContactPlugin: CMakeFiles/ContactPlugin.dir/rule
+
+.PHONY : ContactPlugin
+
+# clean rule for target.
+CMakeFiles/ContactPlugin.dir/clean:
+	$(MAKE) -f CMakeFiles/ContactPlugin.dir/build.make CMakeFiles/ContactPlugin.dir/clean
+.PHONY : CMakeFiles/ContactPlugin.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

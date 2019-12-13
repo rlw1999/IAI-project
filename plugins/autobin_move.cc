@@ -2,7 +2,6 @@
 #include <gazebo/gazebo.hh>
 #include <gazebo/physics/physics.hh>
 #include <gazebo/common/common.hh>
-#include <stdio.h>
 #include <stdlib.h>
 #include <ctime>
 
@@ -17,7 +16,7 @@ namespace gazebo {
 
             // Create our node for camera communication
             cameraNode->Init();
-            cameraSub = cameraNode->Subscribe("/gazebo/autobin/camera_1/link/camera/image", NULL, this);
+            cameraSub = cameraNode->Subscribe("~/autobin/camera_1/link/camera/image", NULL, this);
 
             // Listen to the update event. This event is broadcast every
             // simulation iteration.

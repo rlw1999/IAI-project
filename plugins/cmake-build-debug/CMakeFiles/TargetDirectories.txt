@@ -1,3 +1,5 @@
 /home/ccr/Desktop/IAI-project/plugins/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/ccr/Desktop/IAI-project/plugins/cmake-build-debug/CMakeFiles/TransporterPlugin.dir
 /home/ccr/Desktop/IAI-project/plugins/cmake-build-debug/CMakeFiles/autobin_move.dir
 /home/ccr/Desktop/IAI-project/plugins/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/ccr/Desktop/IAI-project/plugins/cmake-build-debug/CMakeFiles/ContactPlugin.dir

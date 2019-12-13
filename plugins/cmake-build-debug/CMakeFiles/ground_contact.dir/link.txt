@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC -std=c++11 -std=c++11 -g  -shared -Wl,-soname,libground_contact.so -o libground_contact.so CMakeFiles/ground_contact.dir/ground_contact.cc.o  -L/usr/lib/x86_64-linux-gnu/gazebo-7/plugins 
