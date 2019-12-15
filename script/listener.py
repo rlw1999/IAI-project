@@ -3,9 +3,8 @@ import asyncio
 import pygazebo
 from pygazebo.msg import world_stats_pb2
 
-@asyncio.coroutine
-def main_loop():
-    manager = yield from pygazebo.connect(('localhost', 11345))
+async def main_loop():
+    manager = await pygazebo.connect(('localhost', 11345))
     
     def callback(data):
         message =  world_stats_pb2.WorldStatistics.FromString(data)
@@ -13,8 +12,8 @@ def main_loop():
 
     subscriber = manager.subscribe('/gazebo/default/world_stats', 'gazebo.msgs.WorldStatistics', callback)
     while True:
-        yield from subscriber.wait_for_connection()
-        yield from asyncio.sleep(10)
+        await subscriber.wait_for_connection()
+        await asyncio.sleep(1)
     print('disconnected!')
 
 # logging.basicConfig(level=logging.DEBUG)
