@@ -15,25 +15,20 @@ def cal_torq(*input):
 async def main_loop():
     manager = await pygazebo.connect(('localhost', 11345))
     torq_pub = await manager.advertise('/gazebo/default/torque', 'gazebo.msgs.Vector2d')
-    await torq_pub.wait_for_listener()
-    torq_msg = vector2d_pb2.Vector2d(x=0, y=0)
 
     def callback(data):
-        nonlocal torq_msg
         img = image_stamped_pb2.ImageStamped.FromString(data).image
-        # print('Received image! height: {0.height}, width: {0.width}'.format(img))
+        print('Received image! height: {0.height}, width: {0.width}'.format(img))
 
         torq = cal_torq(img)
         torq_msg = vector2d_pb2.Vector2d(x=torq[0], y=torq[1])
-        # time.sleep(1.0)
+        asyncio.wait(torq_pub.publish(torq_msg))
 
     camera_sub = manager.subscribe('/gazebo/default/camera_1/link/camera/image',
                                    'gazebo.msgs.ImageStamped', callback)
 
     while True:
-        await camera_sub.wait_for_connection()
-        await torq_pub.publish(torq_msg)
-        await asyncio.sleep(0.1)
+        await asyncio.sleep(1.0)
 
     print('disconnected!')
 
