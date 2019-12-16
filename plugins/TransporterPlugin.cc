@@ -21,7 +21,7 @@ namespace gazebo {
 
             // Create our node for msg communication
             msgNode->Init();
-            msgSub = msgNode->Subscribe("~/transporter", &TransporterPlugin::callback, this);
+            msgSub = msgNode->Subscribe("~/ball/link/ball_contact", &TransporterPlugin::callback, this);
 
             // Listen to the update event. This event is broadcast every
             // simulation iteration.
@@ -29,8 +29,12 @@ namespace gazebo {
                     boost::bind(&TransporterPlugin::OnUpdate, this, _1));
         }
 
-        void callback(ConstGzStringPtr &_msg) {
+        void callback(ConstContactsPtr &_msg) {
             // std::cout << _msg->DebugString();
+            if(_msg->contact_size() == 0) return;
+            std::cout << "contact detected!\n";
+            std::cout << "Collision between[" << _msg->contact(0).collision1()
+                         << "] and [" << _msg->contact(0).collision2() << "]\n";
             this->model->SetWorldPose(math::Pose(0, 0, 2, 0, 0, 0));
             this->model->SetLinearVel(math::Vector3(0, 0, 0));
 
