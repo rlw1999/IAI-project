@@ -45,7 +45,7 @@
       </collision>
 
       <sensor name='ball_contact' type='contact'>
-        <plugin name="ContactPlugin" filename="libContactPlugin.so"/>
+        <!--plugin name="ContactPlugin" filename="libContactPlugin.so"/-->
         <contact>
           <collision>collision</collision>
         </contact>
