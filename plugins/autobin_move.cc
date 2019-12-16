@@ -3,20 +3,19 @@
 #include <gazebo/physics/physics.hh>
 #include <gazebo/common/common.hh>
 #include <stdlib.h>
-#include <ctime>
 
 namespace gazebo {
     class AutobinPlugin : public ModelPlugin {
     public:
-        AutobinPlugin() : cameraNode(new gazebo::transport::Node()) {}
+        AutobinPlugin() : msgNode(new gazebo::transport::Node()) {}
 
         void Load(physics::ModelPtr _parent, sdf::ElementPtr /*_sdf*/) {
             // Store the pointer to the model
             this->model = _parent;
 
-            // Create our node for camera communication
-            cameraNode->Init();
-            cameraSub = cameraNode->Subscribe("~/autobin/camera_1/link/camera/image", NULL, this);
+            // Create our node for msg communication
+            msgNode->Init();
+            msgSub = msgNode->Subscribe("~/torque", &AutobinPlugin::callback, this);
 
             // Listen to the update event. This event is broadcast every
             // simulation iteration.
@@ -24,25 +23,24 @@ namespace gazebo {
                     boost::bind(&AutobinPlugin::OnUpdate, this, _1));
         }
 
-        static std::pair<math::Vector3, math::Vector3> calculateTorque() {
-            srand(time(0));
-            int torqueRange = 10;
-            return std::make_pair(math::Vector3(0, 0, (rand() % torqueRange) - torqueRange / 2),
-                                  math::Vector3(0, 0, (rand() % torqueRange) - torqueRange / 2));
+        // Callback function when receive from controller
+        void callback(ConstVector2dPtr &_msg) {
+            double left = _msg->x(), right = _msg->y();
+            std::cout << "Apply torques (" << left << ", " << right <<")\n";
+            this->model->GetLink("wheel_1")->AddTorque(math::Vector3(0, 0, left));
+            this->model->GetLink("wheel_2")->AddTorque(math::Vector3(0, 0, right));
         }
 
         // Called by the world update start event
         void OnUpdate(const common::UpdateInfo & /*_info*/) {
-            auto torques = calculateTorque();
-            this->model->GetLink("wheel_1")->AddTorque(torques.first);
-            this->model->GetLink("wheel_2")->AddTorque(torques.second);
+            /* pass */
         }
 
         // Pointer to the model
     private:
         physics::ModelPtr model;
-        gazebo::transport::NodePtr cameraNode;
-        gazebo::transport::SubscriberPtr cameraSub;
+        gazebo::transport::NodePtr msgNode;
+        gazebo::transport::SubscriberPtr msgSub;
 
         // Pointer to the update event connection
         event::ConnectionPtr updateConnection;

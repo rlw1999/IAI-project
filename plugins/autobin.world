@@ -498,11 +498,11 @@
       <pose>0 -4 2 0 0 1.5708</pose>
     </include>
 
-    <include>
+    <!--include>
       <uri>model://camera</uri>
       <name>camera_2</name>
       <static>true</static>
-      <pose>0 4 2 0 0 -1.5708</pose>
-    </include>
+      <pose>0 0 4 0 -1.5708 0</pose>
+    </include-->
   </world>
 </sdf>
