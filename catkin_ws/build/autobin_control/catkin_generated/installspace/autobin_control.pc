@@ -1,8 +1,0 @@
-prefix=/home/ccr/Desktop/IAI-project/catkin_ws/install
-
-Name: autobin_control
-Description: Description of autobin_control
-Version: 0.1.0
-Cflags: 
-Libs: -L/home/ccr/Desktop/IAI-project/catkin_ws/install/lib 
-Requires: 

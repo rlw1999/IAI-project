@@ -1,8 +1,0 @@
-prefix=/home/ccr/Desktop/IAI-project/catkin_ws/install
-
-Name: autobin_description
-Description: Description of autobin_description
-Version: 0.1.0
-Cflags: 
-Libs: -L/home/ccr/Desktop/IAI-project/catkin_ws/install/lib 
-Requires: 
