@@ -2,11 +2,9 @@
 
 ## 简介
 
-我新建了一个[overleaf](https://www.overleaf.com/2352753512rbkykryzywzs)项目文档，确定项目之后相关的原理、实现说明、结果都可以放在里面，方便之后做pre。日后的讨论主要在Slack(iai-turing-class.slack.com)里，免得每周大家还得找时间讨论，有什么更新或者想法可以直接在#iaiproject或者新开一个channel说，ddl和其他时间节点也会在slack中更新。
+我新建了一个[overleaf](https://www.overleaf.com/2352753512rbkykryzywzs)项目文档，确定项目之后相关的原理、实现说明、结果都可以放在里面，方便之后做pre。
 
 ## 环境
-
-助教建议ROS和Gazebo使用Ubuntu 16.04桌面系统，所以尽量使用linux。
 
 ## 关于github
 
