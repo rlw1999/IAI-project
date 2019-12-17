@@ -42,7 +42,7 @@ namespace gazebo {
             contacts = this->parentSensor->Contacts();
 
             if (contacts.contact_size() > 0) {
-                std::cout << "Contact dectected!\n";
+                std::cout << "Contact detected!\n";
                 for (unsigned int i = 0; i < contacts.contact_size(); ++i) {
                     std::cout << "Collision between[" << contacts.contact(i).collision1()
                               << "] and [" << contacts.contact(i).collision2() << "]\n";

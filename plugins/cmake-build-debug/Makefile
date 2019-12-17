@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named DepthCameraPlugin
+
+# Build rule for target.
+DepthCameraPlugin: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 DepthCameraPlugin
+.PHONY : DepthCameraPlugin
+
+# fast build rule for target.
+DepthCameraPlugin/fast:
+	$(MAKE) -f CMakeFiles/DepthCameraPlugin.dir/build.make CMakeFiles/DepthCameraPlugin.dir/build
+.PHONY : DepthCameraPlugin/fast
+
+#=============================================================================
 # Target rules for targets named TransporterPlugin
 
 # Build rule for target.
@@ -176,6 +189,33 @@ ContactPlugin.cc.s:
 	$(MAKE) -f CMakeFiles/ContactPlugin.dir/build.make CMakeFiles/ContactPlugin.dir/ContactPlugin.cc.s
 .PHONY : ContactPlugin.cc.s
 
+DepthCameraPlugin.o: DepthCameraPlugin.cc.o
+
+.PHONY : DepthCameraPlugin.o
+
+# target to build an object file
+DepthCameraPlugin.cc.o:
+	$(MAKE) -f CMakeFiles/DepthCameraPlugin.dir/build.make CMakeFiles/DepthCameraPlugin.dir/DepthCameraPlugin.cc.o
+.PHONY : DepthCameraPlugin.cc.o
+
+DepthCameraPlugin.i: DepthCameraPlugin.cc.i
+
+.PHONY : DepthCameraPlugin.i
+
+# target to preprocess a source file
+DepthCameraPlugin.cc.i:
+	$(MAKE) -f CMakeFiles/DepthCameraPlugin.dir/build.make CMakeFiles/DepthCameraPlugin.dir/DepthCameraPlugin.cc.i
+.PHONY : DepthCameraPlugin.cc.i
+
+DepthCameraPlugin.s: DepthCameraPlugin.cc.s
+
+.PHONY : DepthCameraPlugin.s
+
+# target to generate assembly for a file
+DepthCameraPlugin.cc.s:
+	$(MAKE) -f CMakeFiles/DepthCameraPlugin.dir/build.make CMakeFiles/DepthCameraPlugin.dir/DepthCameraPlugin.cc.s
+.PHONY : DepthCameraPlugin.cc.s
+
 TransporterPlugin.o: TransporterPlugin.cc.o
 
 .PHONY : TransporterPlugin.o
@@ -236,6 +276,7 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... DepthCameraPlugin"
 	@echo "... rebuild_cache"
 	@echo "... TransporterPlugin"
 	@echo "... autobin_move"
@@ -244,6 +285,9 @@ help:
 	@echo "... ContactPlugin.o"
 	@echo "... ContactPlugin.i"
 	@echo "... ContactPlugin.s"
+	@echo "... DepthCameraPlugin.o"
+	@echo "... DepthCameraPlugin.i"
+	@echo "... DepthCameraPlugin.s"
 	@echo "... TransporterPlugin.o"
 	@echo "... TransporterPlugin.i"
 	@echo "... TransporterPlugin.s"

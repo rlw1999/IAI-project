@@ -12,3 +12,10 @@
 
 19.12.15
 
+## `listener.py`
+
+订阅了stereo camera的`～/stereo_camera/link/camera/images`，获取两张图片，并将计算得到的新的扭矩发送到`~/torque`话题中。
+
+——by ccr
+
+19.12.17

@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<sdf version="1.4">
+<sdf version="1.6">
   <world name="default">
     <include>
       <uri>model://ground_plane</uri>
@@ -492,17 +492,10 @@
   </model>
 
     <include>
-      <uri>model://camera</uri>
-      <name>camera_1</name>
+      <uri>model://stereo_camera</uri>
+      <name>stereo_camera</name>
       <static>true</static>
-      <pose>0 -4 2 0 0 1.5708</pose>
+      <pose>0 0 4 0 1.5708 0</pose>
     </include>
-
-    <!--include>
-      <uri>model://camera</uri>
-      <name>camera_2</name>
-      <static>true</static>
-      <pose>0 0 4 0 -1.5708 0</pose>
-    </include-->
   </world>
 </sdf>

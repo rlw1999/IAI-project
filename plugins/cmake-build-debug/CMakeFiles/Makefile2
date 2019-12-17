@@ -53,6 +53,7 @@ CMAKE_BINARY_DIR = /home/ccr/Desktop/IAI-project/plugins/cmake-build-debug
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
+all: CMakeFiles/DepthCameraPlugin.dir/all
 all: CMakeFiles/TransporterPlugin.dir/all
 all: CMakeFiles/autobin_move.dir/all
 all: CMakeFiles/ContactPlugin.dir/all
@@ -60,6 +61,7 @@ all: CMakeFiles/ContactPlugin.dir/all
 .PHONY : all
 
 # The main recursive "clean" target.
+clean: CMakeFiles/DepthCameraPlugin.dir/clean
 clean: CMakeFiles/TransporterPlugin.dir/clean
 clean: CMakeFiles/autobin_move.dir/clean
 clean: CMakeFiles/ContactPlugin.dir/clean
@@ -72,13 +74,40 @@ preinstall:
 .PHONY : preinstall
 
 #=============================================================================
+# Target rules for target CMakeFiles/DepthCameraPlugin.dir
+
+# All Build rule for target.
+CMakeFiles/DepthCameraPlugin.dir/all:
+	$(MAKE) -f CMakeFiles/DepthCameraPlugin.dir/build.make CMakeFiles/DepthCameraPlugin.dir/depend
+	$(MAKE) -f CMakeFiles/DepthCameraPlugin.dir/build.make CMakeFiles/DepthCameraPlugin.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ccr/Desktop/IAI-project/plugins/cmake-build-debug/CMakeFiles --progress-num=3,4 "Built target DepthCameraPlugin"
+.PHONY : CMakeFiles/DepthCameraPlugin.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/DepthCameraPlugin.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ccr/Desktop/IAI-project/plugins/cmake-build-debug/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/DepthCameraPlugin.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ccr/Desktop/IAI-project/plugins/cmake-build-debug/CMakeFiles 0
+.PHONY : CMakeFiles/DepthCameraPlugin.dir/rule
+
+# Convenience name for target.
+DepthCameraPlugin: CMakeFiles/DepthCameraPlugin.dir/rule
+
+.PHONY : DepthCameraPlugin
+
+# clean rule for target.
+CMakeFiles/DepthCameraPlugin.dir/clean:
+	$(MAKE) -f CMakeFiles/DepthCameraPlugin.dir/build.make CMakeFiles/DepthCameraPlugin.dir/clean
+.PHONY : CMakeFiles/DepthCameraPlugin.dir/clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/TransporterPlugin.dir
 
 # All Build rule for target.
 CMakeFiles/TransporterPlugin.dir/all:
 	$(MAKE) -f CMakeFiles/TransporterPlugin.dir/build.make CMakeFiles/TransporterPlugin.dir/depend
 	$(MAKE) -f CMakeFiles/TransporterPlugin.dir/build.make CMakeFiles/TransporterPlugin.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ccr/Desktop/IAI-project/plugins/cmake-build-debug/CMakeFiles --progress-num=3,4 "Built target TransporterPlugin"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ccr/Desktop/IAI-project/plugins/cmake-build-debug/CMakeFiles --progress-num=5,6 "Built target TransporterPlugin"
 .PHONY : CMakeFiles/TransporterPlugin.dir/all
 
 # Build rule for subdir invocation for target.
@@ -105,7 +134,7 @@ CMakeFiles/TransporterPlugin.dir/clean:
 CMakeFiles/autobin_move.dir/all:
 	$(MAKE) -f CMakeFiles/autobin_move.dir/build.make CMakeFiles/autobin_move.dir/depend
 	$(MAKE) -f CMakeFiles/autobin_move.dir/build.make CMakeFiles/autobin_move.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ccr/Desktop/IAI-project/plugins/cmake-build-debug/CMakeFiles --progress-num=5,6 "Built target autobin_move"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ccr/Desktop/IAI-project/plugins/cmake-build-debug/CMakeFiles --progress-num=7,8 "Built target autobin_move"
 .PHONY : CMakeFiles/autobin_move.dir/all
 
 # Build rule for subdir invocation for target.

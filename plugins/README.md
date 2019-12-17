@@ -8,13 +8,13 @@ export GAZEBO_PLUGIN_PATH=$HOME/Desktop/IAI-project/plugins/build
 
 ## `autobin_move`
 
-一个让autobin瞎xx动的插件，里面实现了读取camera节点的图像，然而扭矩是随机加的。
+订阅了`~/torque`话题，施加两个扭矩。
 
 运行`gazebo --verbose -u autobin.world`并点击下方的开始模拟可以看到结果（`-u`指初始处于暂停状态）。
 
 ——by ccr
 
-19.12.12
+19.12.17
 
 ## `ContactPlugin`
 

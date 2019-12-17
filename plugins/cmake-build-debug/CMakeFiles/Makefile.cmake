@@ -67,6 +67,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
+  "CMakeFiles/DepthCameraPlugin.dir/DependInfo.cmake"
   "CMakeFiles/TransporterPlugin.dir/DependInfo.cmake"
   "CMakeFiles/autobin_move.dir/DependInfo.cmake"
   "CMakeFiles/ContactPlugin.dir/DependInfo.cmake"
