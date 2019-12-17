@@ -1,0 +1,4 @@
+plugins/build
+plugins/.idea
+plugins/cmake-build-debug
+script/.idea
