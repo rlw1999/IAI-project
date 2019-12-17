@@ -29,8 +29,8 @@ namespace gazebo {
         void callback(ConstVector2dPtr &_msg) {
             double left = _msg->x(), right = _msg->y();
             std::cout << "Apply torques (" << left << ", " << right <<")\n";
-            this->model->GetLink("wheel_1")->AddTorque(math::Vector3(0, 0, left));
-            this->model->GetLink("wheel_2")->AddTorque(math::Vector3(0, 0, right));
+            this->model->GetLink("wheel_1")->AddRelativeTorque(math::Vector3(0, 0, left));
+            this->model->GetLink("wheel_2")->AddRelativeTorque(math::Vector3(0, 0, right));
         }
 
         // Called by the world update start event
