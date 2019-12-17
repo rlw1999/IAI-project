@@ -16,6 +16,8 @@ namespace gazebo {
             // Create our node for msg communication
             msgNode->Init();
             msgSub = msgNode->Subscribe("~/torque", &AutobinPlugin::callback, this);
+            velPub = msgNode->Advertise<msgs::Vector3d>("~/autobin/velocity");
+            posPub = msgNode->Advertise<msgs::Vector3d>("~/autobin/position");
 
             // Listen to the update event. This event is broadcast every
             // simulation iteration.
@@ -33,14 +35,28 @@ namespace gazebo {
 
         // Called by the world update start event
         void OnUpdate(const common::UpdateInfo & /*_info*/) {
-            /* pass */
+            math::Vector3 vel = this->model->GetWorldLinearVel();
+            math::Vector3 pos = this->model->GetWorldPose().pos;
+
+            // publish
+            msgs::Vector3d vel_msg, pos_msg;
+            vel_msg.set_x(vel.x);
+            vel_msg.set_y(vel.y);
+            vel_msg.set_z(vel.z);
+            pos_msg.set_x(pos.x);
+            pos_msg.set_y(pos.y);
+            pos_msg.set_z(pos.z);
+            velPub->Publish(vel_msg);
+            posPub->Publish(pos_msg);
         }
 
         // Pointer to the model
     private:
         physics::ModelPtr model;
-        gazebo::transport::NodePtr msgNode;
-        gazebo::transport::SubscriberPtr msgSub;
+        transport::NodePtr msgNode;
+        transport::SubscriberPtr msgSub;
+        transport::PublisherPtr velPub;
+        transport::PublisherPtr posPub;
 
         // Pointer to the update event connection
         event::ConnectionPtr updateConnection;

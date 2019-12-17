@@ -32,10 +32,13 @@ namespace gazebo {
         void callback(ConstContactsPtr &_msg) {
             // std::cout << _msg->DebugString();
             if(_msg->contact_size() == 0) return;
+
+            /*
             std::cout << "contact detected!\n";
             std::cout << "Collision between[" << _msg->contact(0).collision1()
                          << "] and [" << _msg->contact(0).collision2() << "]\n";
-            this->model->SetWorldPose(math::Pose(0, 0, 2, 0, 0, 0));
+            */
+            this->model->SetWorldPose(math::Pose(0, 0, 0, 0, 0, 0));
             this->model->SetLinearVel(math::Vector3(0, 0, 0));
 
             // randomly chooses a direction to throw the ball
@@ -56,8 +59,8 @@ namespace gazebo {
         // Pointer to the model
     private:
         physics::ModelPtr model;
-        gazebo::transport::NodePtr msgNode;
-        gazebo::transport::SubscriberPtr msgSub;
+        transport::NodePtr msgNode;
+        transport::SubscriberPtr msgSub;
 
         // current x and y velocity
         double vel_x, vel_y;
