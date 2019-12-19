@@ -4,3 +4,4 @@ plugins/cmake-build-debug
 script/.idea
 catkin_ws/build
 catkin_ws/devel
+gym-autobin/gym_autobin.egg-info

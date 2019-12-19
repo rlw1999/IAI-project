@@ -24,7 +24,7 @@ namespace gazebo {
 
             // step pace, in ms
             pace = _sdf->Get<unsigned int>("pace");
-
+            std::cout << "pace: "<<pace << std::endl;
             msgNode->Init();
             msgSub = msgNode->Subscribe("~/torque", &AutobinWorldPlugin::step, this);
             rewardPub = msgNode->Advertise<msgs::Vector2d>("~/reward");
@@ -41,10 +41,9 @@ namespace gazebo {
 
             // Step the world
             world->Step(pace);
-
             bool done = false;
             double reward = 0;
-
+            /*
             auto contactMap = contactPtr->Contacts("ball::link::collision");
             if (contactMap.count("autobin::bin::collision")) {
                 // catch the ball
@@ -57,7 +56,35 @@ namespace gazebo {
                 math::Vector3 ball_pos = ballPtr->GetWorldPose().pos;
                 reward = -autobinPtr->GetWorldLinearVel().GetLength()
                          - (bin_pos - ball_pos).GetLength();
+            }*/
+
+            //when the ball is below the top surface of the bin but too far from it, it can't get into it
+            /******************************************************************************************/
+            //modify this when changing initial setting
+            //the height of the bin is 1.05, the radius of the bin is 0.6
+            //the initial height of the ball is 4
+            /******************************************************************************************/
+            math::Vector3 ball_pos = ballPtr->GetWorldPose().pos;
+            math::Vector3 bin_pos = autobinPtr->GetWorldPose().pos;
+            //std::cout << "ball height: " << ball_pos.z << std::endl;
+            double dx = ball_pos.x - bin_pos.x;
+            double dy = ball_pos.y - bin_pos.y;
+            double dist = sqrt(dx*dx+dy*dy);
+            if(4 + ball_pos.z < 1.05)
+            {
+                done = true;
+                if(dist<0.6)
+                {
+                    //hit the bin
+                    reward = 20 - autobinPtr->GetWorldLinearVel().GetLength();
+                }
+                else
+                {
+                    //hit the ground
+                    reward = -autobinPtr->GetWorldLinearVel().GetLength()-dist;
+                }
             }
+            
             // Publish new status
             PublishMsg(done, reward);
             // Episode finishes

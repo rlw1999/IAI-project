@@ -493,7 +493,7 @@
 
   <model name='ball'>
       <link name='link'>
-      <pose frame=''>0 0 4 0 0 0</pose>
+      <pose frame=''>0.3 0 1.5 0 0 0</pose>
       <inertial>
         <mass>0.1</mass>
         <inertia>

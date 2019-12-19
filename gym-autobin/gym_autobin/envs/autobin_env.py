@@ -1,8 +1,11 @@
+import gym
+from gym import error, spaces, utils
+from gym.utils import seeding
+
 import time
 import logging
 import asyncio
 from PIL import Image
-import gym
 
 import pygazebo
 from pygazebo.msg import images_stamped_pb2, vector2d_pb2, vector3d_pb2
