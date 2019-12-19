@@ -35,7 +35,7 @@ namespace gazebo {
         void step(ConstVector2dPtr &_msg) {
             // Apply torques
             double left = _msg->x(), right = _msg->y();
-            std::cout << "Apply torques (" << left << ", " << right << ")\n";
+            //std::cout << "Apply torques (" << left << ", " << right << ")\n";
             autobinPtr->GetLink("wheel_1")->AddRelativeTorque(math::Vector3(0, 0, left));
             autobinPtr->GetLink("wheel_2")->AddRelativeTorque(math::Vector3(0, 0, right));
 
@@ -62,7 +62,7 @@ namespace gazebo {
             /******************************************************************************************/
             //modify this when changing initial setting
             //the height of the bin is 1.05, the radius of the bin is 0.6
-            //the initial height of the ball is 4
+            //the initial height of the ball is 4, the radius is 0.1
             /******************************************************************************************/
             math::Vector3 ball_pos = ballPtr->GetWorldPose().pos;
             math::Vector3 bin_pos = autobinPtr->GetWorldPose().pos;
@@ -70,7 +70,7 @@ namespace gazebo {
             double dx = ball_pos.x - bin_pos.x;
             double dy = ball_pos.y - bin_pos.y;
             double dist = sqrt(dx*dx+dy*dy);
-            if(4 + ball_pos.z < 1.05)
+            if(4 + ball_pos.z < 1.16)
             {
                 done = true;
                 if(dist<0.6)
@@ -88,6 +88,7 @@ namespace gazebo {
             // Publish new status
             PublishMsg(done, reward);
             // Episode finishes
+            if(done) std::cout << "done!" << std::endl;
             if(done) resetBall();
         }
 

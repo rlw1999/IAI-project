@@ -35,13 +35,14 @@ class AutobinEnv(gym.Env):
         manager = await pygazebo.connect(('localhost', 11345))
         torq_pub = await manager.advertise('/gazebo/default/torque', 'gazebo.msgs.Vector2d')
         torq_msg = vector2d_pb2.Vector2d(x=action[0], y=action[1])
-        await asyncio.sleep(0.1)
+        await asyncio.sleep(0.5)
         await torq_pub.publish(torq_msg)
 
         def on_image(data):
-            imgs_msg = images_stamped_pb2.ImagesStamped.FromString(data).image
-            self.imgs = [Image.frombytes('RGB', (img.width, img.height), img) for img in imgs_msg]
+            #imgs_msg = images_stamped_pb2.ImagesStamped.FromString(data).image
+            #self.imgs = [Image.frombytes('RGB', (img.width, img.height), img) for img in imgs_msg]
             #print('Images received!')
+            pass
 
         def on_velocity(data):
             vel_msg = vector3d_pb2.Vector3d.FromString(data)
@@ -67,6 +68,8 @@ class AutobinEnv(gym.Env):
                                     'gazebo.msgs.Vector3d', on_position)
         reward_sub = manager.subscribe('/gazebo/default/reward',
                                        'gazebo.msgs.Vector2d', on_reward)
+        
+        await asyncio.sleep(0.2)
 
 
 if __name__ == '__main__':
@@ -74,4 +77,4 @@ if __name__ == '__main__':
     env = AutobinEnv()
     while True:
         state, reward, done, info = env.step([10, 10])
-        time.sleep(0.1)
+        time.sleep(0.5)

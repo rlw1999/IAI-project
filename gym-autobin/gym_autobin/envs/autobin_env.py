@@ -25,6 +25,8 @@ class AutobinEnv(gym.Env):
     def step(self, action):
         self.loop.run_until_complete(self.main_loop(action))
         #self.loop.close()
+        if self.done:
+          print("done!")
         return self.imgs, self.reward, self.done, \
                {'velocity': self.vel, 'position': self.pos}
 
@@ -42,9 +44,10 @@ class AutobinEnv(gym.Env):
         await torq_pub.publish(torq_msg)
 
         def on_image(data):
-            imgs_msg = images_stamped_pb2.ImagesStamped.FromString(data).image
-            self.imgs = [Image.frombytes('RGB', (img.width, img.height), img) for img in imgs_msg]
+            #imgs_msg = images_stamped_pb2.ImagesStamped.FromString(data).image
+            #self.imgs = [Image.frombytes('RGB', (img.width, img.height), img) for img in imgs_msg]
             #print('Images received!')
+            pass
 
         def on_velocity(data):
             vel_msg = vector3d_pb2.Vector3d.FromString(data)
