@@ -9,7 +9,6 @@ project(autobin_control)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   controller_manager
-  joint_state_controller
   robot_state_publisher
 )
 

@@ -27,7 +27,7 @@ async def main_loop():
     def onImage(data):
         imgs = images_stamped_pb2.ImagesStamped.FromString(data).image
         # print('Received {1} image! height: {0.height}, width: {0.width}'.format(imgs[0], len(imgs)))
-
+        
         torq = cal_torq(imgs, vel)
         torq_msg = vector2d_pb2.Vector2d(x=torq[0], y=torq[1])
         asyncio.wait(torq_pub.publish(torq_msg))
