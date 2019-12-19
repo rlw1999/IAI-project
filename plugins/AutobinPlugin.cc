@@ -24,7 +24,11 @@ namespace gazebo {
 
             // step pace, in ms
             pace = _sdf->Get<unsigned int>("pace");
+<<<<<<< HEAD
             std::cout << "pace: "<<pace << std::endl;
+=======
+
+>>>>>>> 0014d66a088edf472cf788722796d9c90e790380
             msgNode->Init();
             msgSub = msgNode->Subscribe("~/torque", &AutobinWorldPlugin::step, this);
             rewardPub = msgNode->Advertise<msgs::Vector2d>("~/reward");
@@ -41,9 +45,16 @@ namespace gazebo {
 
             // Step the world
             world->Step(pace);
+<<<<<<< HEAD
             bool done = false;
             double reward = 0;
             /*
+=======
+
+            bool done = false;
+            double reward = 0;
+
+>>>>>>> 0014d66a088edf472cf788722796d9c90e790380
             auto contactMap = contactPtr->Contacts("ball::link::collision");
             if (contactMap.count("autobin::bin::collision")) {
                 // catch the ball
@@ -56,6 +67,7 @@ namespace gazebo {
                 math::Vector3 ball_pos = ballPtr->GetWorldPose().pos;
                 reward = -autobinPtr->GetWorldLinearVel().GetLength()
                          - (bin_pos - ball_pos).GetLength();
+<<<<<<< HEAD
             }*/
 
             //when the ball is below the top surface of the bin but too far from it, it can't get into it
@@ -85,6 +97,9 @@ namespace gazebo {
                 }
             }
             
+=======
+            }
+>>>>>>> 0014d66a088edf472cf788722796d9c90e790380
             // Publish new status
             PublishMsg(done, reward);
             // Episode finishes
