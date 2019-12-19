@@ -23,6 +23,8 @@ namespace gazebo {
             msgNode->Init();
             msgSub = msgNode->Subscribe("~/ball/link/ball_contact", &TransporterPlugin::callback, this);
 
+            velPub = msgNode->Advertise<msgs::Vector3d>("~/ball/velocity");
+            posPub = msgNode->Advertise<msgs::Vector3d>("~/ball/position");
             // Listen to the update event. This event is broadcast every
             // simulation iteration.
             this->updateConnection = event::Events::ConnectWorldUpdateBegin(
@@ -43,6 +45,8 @@ namespace gazebo {
 
             // randomly chooses a direction to throw the ball
             double max_vel = 2;
+	    //double theta = PI/4;
+	    //double vel = 1;
             double theta = randGen.GetDblUniform(0, 2 * PI);
             double vel = randGen.GetDblUniform(0, max_vel);
             this->vel_x = vel * std::cos(theta);
@@ -52,6 +56,20 @@ namespace gazebo {
 
         // Called by the world update start event
         void OnUpdate(const common::UpdateInfo & /*_info*/) {
+            math::Vector3 vel = this->model->GetWorldLinearVel();
+            math::Vector3 pos = this->model->GetWorldPose().pos;
+
+            // publish
+            msgs::Vector3d vel_msg, pos_msg;
+            vel_msg.set_x(vel.x);
+            vel_msg.set_y(vel.y);
+            vel_msg.set_z(vel.z);
+            pos_msg.set_x(pos.x);
+            pos_msg.set_y(pos.y);
+            pos_msg.set_z(pos.z);
+            velPub->Publish(vel_msg);
+            posPub->Publish(pos_msg);
+
             double vel_z = this->model->GetWorldLinearVel().z;
             this->model->SetLinearVel(math::Vector3(this->vel_x, this->vel_y, vel_z));
         }
@@ -61,7 +79,8 @@ namespace gazebo {
         physics::ModelPtr model;
         transport::NodePtr msgNode;
         transport::SubscriberPtr msgSub;
-
+        transport::PublisherPtr velPub;
+        transport::PublisherPtr posPub;
         // current x and y velocity
         double vel_x, vel_y;
 
