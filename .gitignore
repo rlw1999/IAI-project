@@ -2,3 +2,5 @@ plugins/build
 plugins/.idea
 plugins/cmake-build-debug
 script/.idea
+catkin_ws/build
+catkin_ws/devel
