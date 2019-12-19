@@ -7,7 +7,7 @@ from pygazebo.msg import images_stamped_pb2, contacts_pb2, vector2d_pb2, vector3
 
 
 def cal_torq(*input):
-    torqueRange = 1000
+    torqueRange = 200
     return random.uniform(-torqueRange, torqueRange), \
            random.uniform(-torqueRange, torqueRange)
 
