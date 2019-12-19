@@ -3,7 +3,7 @@
 ## Installation
 
 ```bash
-cd <gym-autobin>
+cd gym-autobin
 pip3 install -e .
 ```
 
