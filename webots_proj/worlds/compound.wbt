@@ -1,0 +1,74 @@
+#VRML_SIM R2019b utf8
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.9849917969893106 -0.16480001736384792 -0.05130413375785747 0.7145715069942613
+  position -0.15027954117286002 1.0175638543508863 1.1880526963950162
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  floorTileSize 0.25 0.25
+}
+WoodenBox {
+  translation -0.23879032042684903 0.049921520000000004 -0.23162797372770466
+  rotation -0.9982648818322903 0.041636676742767456 -0.041636676742767505 -1.5725329511507673
+  name "wooden box(1)"
+  size 0.1 0.1 0.1
+  mass 0.2
+}
+Solid {
+  translation 0 0.03 0
+  rotation 0 0 0.9999999999999999 1.5707974875221253
+  children [
+    DEF G0 Group {
+      children [
+        Transform {
+          translation 0 -0.05 0
+          children [
+            Shape {
+              appearance Appearance {
+                material Material {
+                }
+              }
+              geometry Sphere {
+                radius 0.03
+                subdivision 2
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0 0.05 0
+          children [
+            Shape {
+              appearance Appearance {
+                material Material {
+                }
+              }
+              geometry Sphere {
+                radius 0.03
+                subdivision 2
+              }
+            }
+          ]
+        }
+        Shape {
+          appearance Appearance {
+            material Material {
+            }
+          }
+          geometry Cylinder {
+            height 0.1
+            radius 0.01
+          }
+        }
+      ]
+    }
+  ]
+  boundingObject USE G0
+  physics Physics {
+  }
+}
